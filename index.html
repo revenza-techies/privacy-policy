@@ -2,346 +2,177 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy | Revenza Techies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Revenza - Legal</title>
+
   <style>
     :root {
-      --primary: #0d47a1;
-      --secondary: #1e88e5;
-      --accent: #29b6f6;
-      --bg: #eef6ff;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #5b6472;
-      --border: rgba(30,136,229,0.14);
-      --shadow: 0 18px 45px rgba(13, 71, 161, 0.12);
-      --radius: 24px;
+      --bg: #0f172a;
+      --sidebar: #111827;
+      --card: #1f2937;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #3b82f6;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(41,182,246,.22), transparent 26%),
-        radial-gradient(circle at top right, rgba(13,71,161,.12), transparent 24%),
-        linear-gradient(180deg, #f8fbff 0%, #edf6ff 100%);
-      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
 
-    .wrap {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 40px 20px 80px;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, rgba(13,71,161,.97), rgba(30,136,229,.95) 55%, rgba(41,182,246,.92));
-      color: white;
-      border-radius: 32px;
-      padding: 34px 34px 28px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255,255,255,.08);
-    }
-
-    .hero::before {
-      width: 240px;
-      height: 240px;
-      right: -70px;
-      top: -85px;
-    }
-
-    .hero::after {
-      width: 180px;
-      height: 180px;
-      left: -55px;
-      bottom: -70px;
-    }
-
-    .brand {
+    /* Header */
+    .header {
+      height: 70px;
+      background: #020617;
       display: flex;
       align-items: center;
-      gap: 18px;
-      position: relative;
-      z-index: 1;
+      padding: 0 20px;
+      border-bottom: 1px solid #1f2937;
     }
 
-    .brand img {
-      width: 96px;
-      height: 96px;
-      object-fit: contain;
-      border-radius: 18px;
-      background: rgba(255,255,255,.95);
-      padding: 8px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.12);
-      flex-shrink: 0;
+    .header img {
+      height: 45px;
+      margin-right: 12px;
     }
 
-    .brand-text h1 {
-      margin: 0 0 6px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
+    .header h1 {
+      font-size: 18px;
+      font-weight: 600;
     }
 
-    .brand-text .company {
-      margin: 0;
-      font-size: 1.05rem;
-      font-weight: 700;
-      opacity: 0.95;
+    /* Layout */
+    .main {
+      display: flex;
+      flex: 1;
     }
 
-    .subtitle {
-      margin: 18px 0 0;
-      max-width: 720px;
-      font-size: 1rem;
-      color: rgba(255,255,255,.92);
-      position: relative;
-      z-index: 1;
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: var(--sidebar);
+      padding: 20px;
     }
 
-    .meta {
-      display: inline-flex;
-      margin-top: 18px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.13);
-      border: 1px solid rgba(255,255,255,.18);
-      font-size: .95rem;
-      font-weight: 700;
-      position: relative;
-      z-index: 1;
+    .sidebar h2 {
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: var(--muted);
     }
 
-    .content {
-      margin-top: 26px;
-      display: grid;
-      gap: 20px;
+    .sidebar a {
+      display: block;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 5px;
+      transition: 0.2s;
     }
 
-    .card {
+    .sidebar a:hover {
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: 0 10px 25px rgba(17, 24, 39, 0.05);
+      color: white;
     }
 
-    h2 {
-      margin: 0 0 14px;
-      font-size: 1.28rem;
-      color: var(--primary);
+    /* Content */
+    .content {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    section {
+      margin-bottom: 40px;
+      background: var(--card);
+      padding: 25px;
+      border-radius: 10px;
+    }
+
+    h1, h2 {
+      margin-bottom: 15px;
     }
 
     p {
-      margin: 0 0 14px;
-    }
-
-    ul {
-      margin: 0;
-      padding-left: 22px;
-    }
-
-    li {
-      margin: 10px 0;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .footer {
-      margin-top: 20px;
-      text-align: center;
+      margin-bottom: 10px;
+      line-height: 1.6;
       color: var(--muted);
-      font-size: .95rem;
     }
 
-    .contact-box {
-      background: linear-gradient(180deg, #f9fcff 0%, #f2f8ff 100%);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-    }
-
-    a {
-      color: var(--secondary);
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    @media (max-width: 760px) {
-      .brand {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .hero {
-        padding: 28px 22px 24px;
-      }
-
-      .card {
-        padding: 22px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header class="hero">
-      <div class="brand">
-        <!-- Replace this src with your actual logo path if needed -->
-        <img src="your-logo.png" alt="Revenza Techies Logo" />
-        <div class="brand-text">
-          <h1>Privacy Policy</h1>
-          <p class="company">Revenza Techies</p>
-        </div>
-      </div>
-      <p class="subtitle">
-        This Privacy Policy describes how Revenza Techies collects, uses, and protects information when you install or use the Revenza Upsell Addon App on your Shopify store.
-      </p>
-      <div class="meta">Last updated: April 2026</div>
-    </header>
 
-    <main class="content">
-      <section class="card">
-        <h2>1. Introduction</h2>
-        <p>
-          This Privacy Policy describes how Revenza Techies ("we", "our", or "us") collects, uses, and protects information when you install or use the Revenza Upsell Addon App ("the App") on your Shopify store.
-        </p>
-        <p>
-          By using the App, you agree to the collection and use of information in accordance with this policy.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>2. Information We Collect</h2>
-        <p>When you install and use our App, we may collect the following types of information:</p>
-        <ul>
-          <li><strong>Store Information:</strong> Shopify store domain, store email, and basic shop details.</li>
-          <li><strong>Product Data:</strong> Product IDs, titles, variants, and related metadata required to display upsell recommendations.</li>
-          <li><strong>App Configuration Data:</strong> Settings and product selections configured within the App.</li>
-          <li><strong>Technical Data:</strong> IP address, browser type, device information, and usage logs for performance and debugging purposes.</li>
-        </ul>
-        <p>
-          We do not collect or store sensitive personal customer data unless explicitly required for app functionality.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>3. How We Use Information</h2>
-        <p>We use the collected information solely to provide and improve the App’s functionality, including:</p>
-        <ul>
-          <li>Displaying upsell and recommended products on your store</li>
-          <li>Saving and managing your app settings and configurations</li>
-          <li>Authenticating and identifying your Shopify store</li>
-          <li>Improving app performance and user experience</li>
-          <li>Providing customer support when requested</li>
-        </ul>
-        <p>
-          We do not sell, rent, or misuse your data.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>4. Shopify API Usage</h2>
-        <p>
-          Our App accesses Shopify store data via Shopify APIs only as necessary to provide core functionality.
-        </p>
-        <p>
-          We access limited store data such as product information to generate and display upsell recommendations.
-        </p>
-        <p>
-          We do not access or process customer personal data unless explicitly required and permitted by Shopify and the merchant.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>5. Data Sharing</h2>
-        <p>
-          We do not sell or share your data with third parties.
-        </p>
-        <p>
-          We may share data only with trusted service providers, such as hosting or infrastructure providers, strictly required to operate the App. These providers are obligated to protect your data.
-        </p>
-        <p>
-          We may also disclose data if required by law or to protect our legal rights.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>6. Data Storage &amp; Security</h2>
-        <p>
-          Your data is stored securely on cloud infrastructure and protected using reasonable administrative and technical safeguards.
-        </p>
-        <p>
-          While we take appropriate measures to protect your data, no method of transmission or storage is completely secure.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>7. Data Retention</h2>
-        <p>
-          We retain your data only for as long as necessary to provide the App’s services and fulfill the purposes described in this Privacy Policy.
-        </p>
-        <p>
-          Upon uninstallation of the App, we automatically delete or anonymize your store-related data from our database within a reasonable timeframe, unless we are required to retain certain information for legal, compliance, or legitimate business purposes.
-        </p>
-        <p>
-          If you would like to request deletion of your data at any time, you may contact us using the details provided below.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>8. Your Rights</h2>
-        <p>As a merchant, you have the right to:</p>
-        <ul>
-          <li>Access the data we store about your store</li>
-          <li>Request correction or deletion of your data</li>
-          <li>Stop data processing by uninstalling the App</li>
-        </ul>
-        <p>
-          For any requests, you can contact us using the details below.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>9. Changes to This Policy</h2>
-        <p>
-          We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>10. Contact Information</h2>
-        <div class="contact-box">
-          <p><strong>Company:</strong> Revenza Techies</p>
-          <p><strong>App:</strong> Revenza Upsell Addons App</p>
-          <p><strong>Email:</strong> revenzatechies@gmail.com</p>
-        </div>
-      </section>
-    </main>
-
-    <div class="footer">
-      © 2026 Revenza Techies. All rights reserved.
-    </div>
+  <!-- HEADER -->
+  <div class="header">
+    <!-- 🔥 Replace with your hosted image path -->
+    <img src="Upsell logo-1.png" alt="Revenza Logo">
+    <h1>Revenza Upsell Addon</h1>
   </div>
+
+  <div class="main">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <h2>Legal</h2>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms of Service</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <section id="privacy">
+        <h1>Privacy Policy</h1>
+        <p>This Privacy Policy explains how Revenza collects, uses, and protects your information.</p>
+
+        <h2>Information We Collect</h2>
+        <p>We may collect personal data such as name, email, and usage data.</p>
+
+        <h2>How We Use Information</h2>
+        <p>We use your information to improve services, provide support, and communicate updates.</p>
+
+        <h2>Data Protection</h2>
+        <p>Your data is securely stored and protected.</p>
+
+        <h2>Third-Party Services</h2>
+        <p>We may use third-party services that have their own policies.</p>
+      </section>
+
+      <section id="terms">
+        <h1>Terms of Service</h1>
+        <p>By using Revenza, you agree to the following terms.</p>
+
+        <h2>Usage</h2>
+        <p>You agree not to misuse the service.</p>
+
+        <h2>Limitations</h2>
+        <p>We are not liable for damages resulting from usage.</p>
+      </section>
+
+      <section id="contact">
+        <h1>Contact</h1>
+        <p>Have questions? Reach out to us.</p>
+        <p>Email: support@revenza.com</p>
+      </section>
+
+    </div>
+
+  </div>
+
 </body>
 </html>
