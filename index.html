@@ -1,178 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Revenza - Legal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenza</title>
 
-  <style>
-    :root {
-      --bg: #0f172a;
-      --sidebar: #111827;
-      --card: #1f2937;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #3b82f6;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+  }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+  .sidebar {
+    width: 240px;
+    height: 100vh;
+    background: #111827;
+    position: fixed;
+    padding: 20px;
+  }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
+  .sidebar h2 {
+    margin-bottom: 20px;
+  }
 
-    /* Header */
-    .header {
-      height: 70px;
-      background: #020617;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      border-bottom: 1px solid #1f2937;
-    }
+  .nav-link {
+    display: block;
+    padding: 10px;
+    margin-bottom: 6px;
+    color: #9ca3af;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.2s;
+  }
 
-    .header img {
-      height: 45px;
-      margin-right: 12px;
-    }
+  .nav-link:hover {
+    background: #1f2937;
+    color: white;
+  }
 
-    .header h1 {
-      font-size: 18px;
-      font-weight: 600;
-    }
+  .nav-link.active {
+    background: #3b82f6;
+    color: white;
+  }
 
-    /* Layout */
-    .main {
-      display: flex;
-      flex: 1;
-    }
+  .content {
+    margin-left: 240px;
+    padding: 30px;
+  }
 
-    /* Sidebar */
-    .sidebar {
-      width: 240px;
-      background: var(--sidebar);
-      padding: 20px;
-    }
+  .page {
+    display: none;
+    animation: fadeIn 0.2s ease-in-out;
+  }
 
-    .sidebar h2 {
-      margin-bottom: 20px;
-      font-size: 16px;
-      color: var(--muted);
-    }
+  .page.active {
+    display: block;
+  }
 
-    .sidebar a {
-      display: block;
-      color: var(--muted);
-      text-decoration: none;
-      padding: 10px;
-      border-radius: 6px;
-      margin-bottom: 5px;
-      transition: 0.2s;
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-    .sidebar a:hover {
-      background: var(--card);
-      color: white;
-    }
+  section {
+    background: #1f2937;
+    padding: 25px;
+    border-radius: 10px;
+  }
+</style>
 
-    /* Content */
-    .content {
-      flex: 1;
-      padding: 30px;
-      overflow-y: auto;
-    }
-
-    section {
-      margin-bottom: 40px;
-      background: var(--card);
-      padding: 25px;
-      border-radius: 10px;
-    }
-
-    h1, h2 {
-      margin-bottom: 15px;
-    }
-
-    p {
-      margin-bottom: 10px;
-      line-height: 1.6;
-      color: var(--muted);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <div class="header">
-    <!-- 🔥 Replace with your hosted image path -->
-    <img src="Upsell logo-1.png" alt="Revenza Logo">
-    <h1>Revenza Upsell Addon</h1>
+<!-- Sidebar -->
+<div class="sidebar">
+  <h2>Revenza</h2>
+
+  <a href="#home" class="nav-link" data-page="home">Home</a>
+  <a href="#privacy" class="nav-link" data-page="privacy">Privacy Policy</a>
+</div>
+
+<!-- Content -->
+<div class="content">
+
+  <!-- HOMEPAGE -->
+  <div id="home" class="page">
+    <!-- 🔥 PASTE YOUR ORIGINAL HOMEPAGE CODE HERE -->
+    <h1>Homepage</h1>
+    <p>Your original homepage UI stays exactly as it is.</p>
   </div>
 
-  <div class="main">
+  <!-- PRIVACY -->
+  <div id="privacy" class="page">
+    <section>
+      <h1>Privacy Policy</h1>
 
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-      <h2>Legal</h2>
-      <a href="#privacy">Privacy Policy</a>
-      <a href="#terms">Terms of Service</a>
-      <a href="#contact">Contact</a>
-    </div>
+      <p>This Privacy Policy explains how Revenza collects and uses your information.</p>
 
-    <!-- CONTENT -->
-    <div class="content">
+      <h2>Information We Collect</h2>
+      <p>We may collect personal data such as name, email, and usage data.</p>
 
-      <section id="privacy">
-        <h1>Privacy Policy</h1>
-        <p>This Privacy Policy explains how Revenza collects, uses, and protects your information.</p>
+      <h2>How We Use Information</h2>
+      <p>We use your data to improve services and support users.</p>
 
-        <h2>Information We Collect</h2>
-        <p>We may collect personal data such as name, email, and usage data.</p>
+      <h2>Data Protection</h2>
+      <p>Your data is securely stored and protected.</p>
 
-        <h2>How We Use Information</h2>
-        <p>We use your information to improve services, provide support, and communicate updates.</p>
-
-        <h2>Data Protection</h2>
-        <p>Your data is securely stored and protected.</p>
-
-        <h2>Third-Party Services</h2>
-        <p>We may use third-party services that have their own policies.</p>
-      </section>
-
-      <section id="terms">
-        <h1>Terms of Service</h1>
-        <p>By using Revenza, you agree to the following terms.</p>
-
-        <h2>Usage</h2>
-        <p>You agree not to misuse the service.</p>
-
-        <h2>Limitations</h2>
-        <p>We are not liable for damages resulting from usage.</p>
-      </section>
-
-      <section id="contact">
-        <h1>Contact</h1>
-        <p>Have questions? Reach out to us.</p>
-        <p>Email: support@revenza.com</p>
-      </section>
-
-    </div>
-
+      <h2>Third-Party Services</h2>
+      <p>We may use third-party tools that have their own policies.</p>
+    </section>
   </div>
+
+</div>
+
+<script>
+  function showPage(pageId) {
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+    // Show selected page
+    const page = document.getElementById(pageId);
+    if (page) page.classList.add('active');
+
+    // Update active nav
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('active');
+      if (link.dataset.page === pageId) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  function handleRouting() {
+    const hash = window.location.hash.replace('#', '') || 'home';
+    showPage(hash);
+  }
+
+  // On load
+  window.addEventListener('load', handleRouting);
+
+  // On back/forward navigation
+  window.addEventListener('hashchange', handleRouting);
+</script>
 
 </body>
 </html>
