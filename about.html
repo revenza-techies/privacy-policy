@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+Ôªø<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -49,6 +49,48 @@
       a {
         color: inherit;
         text-decoration: none;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 56px;
+        padding: 0 20px;
+        border-bottom: 1px solid #d6dde6;
+        background: #e7eaee;
+      }
+
+      .brand {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1;
+        color: #1a2d40;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav a {
+        color: #50647d;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .nav a:hover {
+        background: #edf4fb;
+        color: #3e5b77;
+      }
+
+      .nav a.active {
+        background: #d9ebfc;
+        color: #2f6fa9;
       }
 
       .container {
@@ -431,6 +473,20 @@
       }
 
       @media (max-width: 720px) {
+        .header {
+          align-items: flex-start;
+          padding: 12px 14px;
+        }
+
+        .brand {
+          font-size: 20px;
+        }
+
+        .nav a {
+          font-size: 14px;
+          padding: 6px 10px;
+        }
+
         .hero-wrap {
           padding-top: 18px;
         }
@@ -457,10 +513,7 @@
   </head>
   <body>
     <header class="header">
-      <div class="brand-wrap" style="gap:10px;">
-        <img src="assets/upsell-logo.png" alt="Revenza logo" style="width:36px;height:36px;border-radius:8px;border:1px solid #e2e8f0;" />
-        <div class="brand" style="font-weight:700;">Revenza</div>
-      </div>
+      <div class="brand">Revenza</div>
       <nav class="nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="apps.html">Apps</a>
@@ -510,14 +563,14 @@
               </div>
               <div class="glass-card">
                 <h3>Precision Upsell</h3>
-                <p>Relevant add-ons, smart timing, and clean presentationóbecause good upsells should feel helpful, not noisy.</p>
+                <p>Relevant add-ons, smart timing, and clean presentation‚Äîbecause good upsells should feel helpful, not noisy.</p>
               </div>
               <div class="glass-card">
                 <h3>Experience-Led</h3>
                 <p>We care about conversions, but never at the cost of shopper trust, clarity, or a smooth buying journey.</p>
               </div>
               <div class="quote-card">
-                <p>ìWe didnít want to build another bloated app. We wanted to build something merchants would actually enjoy using.î</p>
+                <p>‚ÄúWe didn‚Äôt want to build another bloated app. We wanted to build something merchants would actually enjoy using.‚Äù</p>
               </div>
             </div>
           </div>
@@ -547,7 +600,7 @@
               At Revenza, we design upsell experiences that feel like a natural part of shopping. The goal is simple: help store owners surface the right add-on products at the right moment.
             </p>
             <p>
-              We believe the best commerce tools are the ones that improve results quietlyóby making decisions sharper, interfaces cleaner, and buying journeys smoother.
+              We believe the best commerce tools are the ones that improve results quietly‚Äîby making decisions sharper, interfaces cleaner, and buying journeys smoother.
             </p>
           </section>
 
@@ -558,13 +611,13 @@
               Revenza was started by two friends, <strong>Bawa</strong> and <strong>Bhaiyaji</strong>, who met as colleagues and kept seeing the same thing: merchants often had growth opportunities, but the tools available to them were either too clunky, too generic, or too complicated.
             </p>
             <p>
-              Like most builders, we tried figuring things out separately first. There were experiments, setbacks, late nights, and the usual ìmaybe laterî thinking.
+              Like most builders, we tried figuring things out separately first. There were experiments, setbacks, late nights, and the usual ‚Äúmaybe later‚Äù thinking.
             </p>
             <div class="highlight-box">
-              Then came the spark: a casual conversation, a simple suggestion from Sarthakís wife, and one of those nights where an idea suddenly feels too real to ignore.
+              Then came the spark: a casual conversation, a simple suggestion from Sarthak‚Äôs wife, and one of those nights where an idea suddenly feels too real to ignore.
             </div>
             <p>
-              That idea turned into Revenzaóa brand built to help Shopify merchants grow in a way that feels premium, practical, and customer-friendly.
+              That idea turned into Revenza‚Äîa brand built to help Shopify merchants grow in a way that feels premium, practical, and customer-friendly.
             </p>
           </section>
 
@@ -616,3 +669,4 @@
     </div>
   </body>
 </html>
+
