@@ -8,31 +8,42 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+:root {
+  --bg: #f3f8ff;
+  --surface: #ffffff;
+  --surface-soft: #f7fbff;
+  --text: #17314a;
+  --muted: #4a6379;
+  --line: #dce8f6;
+  --accent: #2658c8;
+  --accent-soft: #eaf1ff;
+}
 * { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
   font-family: "Manrope", "Segoe UI", sans-serif;
-  color: #17314a;
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   background:
-    radial-gradient(circle at 10% 10%, rgba(83, 74, 183, 0.12), transparent 32%),
-    radial-gradient(circle at 85% 0%, rgba(14, 179, 151, 0.14), transparent 28%),
-    linear-gradient(180deg, #f7fbff 0%, #f3f8ff 100%);
+    radial-gradient(circle at 8% 0%, rgba(83, 74, 183, 0.12), transparent 28%),
+    radial-gradient(circle at 92% 8%, rgba(14, 179, 151, 0.16), transparent 26%),
+    linear-gradient(180deg, #f7fbff 0%, var(--bg) 100%);
 }
 .app { display: flex; flex-direction: column; min-height: 100vh; }
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  min-height: 56px;
-  border-bottom: 1px solid #dfeaf7;
-  background: rgba(255, 255, 255, 0.85);
+  padding: 12px 20px;
+  min-height: 64px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(4px);
   gap: 16px;
 }
-.brand { font-size: 20px; }
+.brand { font-size: 20px; letter-spacing: 0.2px; }
 .nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .nav a {
   text-decoration: none;
@@ -42,87 +53,97 @@ body {
   font-weight: 600;
 }
 .nav a:hover { background: #edf5ff; color: #274865; }
-.nav a.active { color: #2e4ec3; font-weight: 700; background: #eaf0ff; }
+.nav a.active { color: var(--accent); font-weight: 700; background: var(--accent-soft); }
 .main {
   width: 100%;
-  max-width: 980px;
-  margin: 20px auto 30px;
-  padding: 28px 20px 40px;
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid #e3ecf8;
-  border-radius: 16px;
-  box-shadow: 0 12px 28px rgba(41, 77, 126, 0.08);
-  position: relative;
-  overflow: hidden;
+  max-width: 1160px;
+  margin: 18px auto 28px;
+  padding: 0 18px;
 }
-.main::before {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  right: -60px;
-  top: -80px;
-  background:
-    repeating-linear-gradient(
-      -45deg,
-      rgba(83, 74, 183, 0.07),
-      rgba(83, 74, 183, 0.07) 10px,
-      rgba(83, 74, 183, 0.02) 10px,
-      rgba(83, 74, 183, 0.02) 20px
-    );
-  border-radius: 28px;
-  transform: rotate(8deg);
+.hero {
+  background: linear-gradient(135deg, #ffffff 0%, #f3f9ff 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 12px 28px rgba(33, 74, 123, 0.08);
+  margin-bottom: 16px;
 }
-.main::after {
-  content: "";
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  left: -50px;
-  bottom: -55px;
-  background: radial-gradient(circle, rgba(14, 179, 151, 0.16) 0%, rgba(14, 179, 151, 0.03) 70%);
-  border-radius: 999px;
-}
-h1 {
-  margin-bottom: 14px;
-  font-size: clamp(30px, 4vw, 44px);
-  line-height: 1.1;
+.hero h1 {
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.08;
   letter-spacing: -0.4px;
-}
-h2 {
-  margin: 26px 0 10px;
-  color: #1f3b56;
-  font-size: 24px;
-  line-height: 1.2;
-  letter-spacing: -0.15px;
-}
-p {
-  line-height: 1.78;
   margin-bottom: 12px;
-  color: #2d4760;
+}
+.hero p {
   font-size: 16px;
+  color: var(--muted);
+  line-height: 1.72;
+  margin-bottom: 10px;
 }
-.story-intro {
-  background: linear-gradient(135deg, #f7faff 0%, #f2fbff 100%);
-  border: 1px solid #dce8f6;
-  border-radius: 14px;
-  padding: 18px;
-  margin-bottom: 12px;
+.quote {
+  margin-top: 10px;
+  border-left: 4px solid #89a8ee;
+  background: #f4f8ff;
+  color: #2c4d6d;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-weight: 600;
 }
-.cards {
+.layout {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 280px minmax(0, 1fr);
   gap: 16px;
 }
-.card {
-  background: #ffffff;
-  border: 1px solid #deebf8;
-  border-radius: 14px;
-  padding: 20px;
-  box-shadow: 0 8px 18px rgba(28, 66, 106, 0.06);
+.side-nav {
+  position: sticky;
+  top: 82px;
+  align-self: start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
 }
-.card h2 { margin-top: 0; }
-.eyebrow {
+.side-nav h2 {
+  font-size: 13px;
+  color: #345473;
+  margin-bottom: 10px;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+}
+.side-nav a {
+  display: block;
+  text-decoration: none;
+  color: #486078;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+}
+.side-nav a:hover { background: #f2f7ff; color: var(--accent); }
+.panels {
+  display: grid;
+  gap: 12px;
+}
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(36, 79, 126, 0.06);
+}
+.panel h2 {
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+  margin-bottom: 10px;
+}
+.panel p {
+  font-size: 16px;
+  color: #2d4760;
+  line-height: 1.78;
+  margin-bottom: 11px;
+}
+.tag {
   display: inline-block;
   margin-bottom: 10px;
   padding: 5px 10px;
@@ -135,22 +156,22 @@ p {
   letter-spacing: 0.25px;
   text-transform: uppercase;
 }
-.story-list {
+.list {
   margin: 8px 0 12px 20px;
-  line-height: 1.7;
   color: #2d4760;
+  line-height: 1.75;
 }
-.story-list li { margin-bottom: 6px; }
-strong { color: #183a63; }
-.content {
-  position: relative;
-  z-index: 1;
+.list li { margin-bottom: 6px; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .side-nav { position: static; }
 }
 @media (max-width: 768px) {
   .header { align-items: flex-start; padding: 12px 14px; }
-  .main { margin: 14px 10px 20px; padding: 20px 14px 28px; }
-  .main::before { width: 150px; height: 150px; right: -40px; top: -60px; }
-  .main::after { width: 110px; height: 110px; left: -35px; bottom: -40px; }
+  .main { margin: 14px auto 20px; padding: 0 12px; }
+  .hero { padding: 18px 14px; border-radius: 14px; }
+  .panel { padding: 16px 14px; border-radius: 14px; }
+  .panel h2 { font-size: 23px; }
 }
 </style>
 </head>
@@ -168,44 +189,60 @@ strong { color: #183a63; }
     <a href="privacy.html">Privacy Policy</a>
   </nav>
 </header>
+
 <main class="main">
-  <div class="content">
-  <h1>About Revenza</h1>
+  <section class="hero">
+    <h1>About Revenza</h1>
+    <p>It started with a frustration. Our founders spent years watching talented teams lose hours every week to clunky tools and scattered processes. So in 2026, they set out to build something different.</p>
+    <p class="quote">"We didn't want to build another feature-bloated app. We wanted to build the one thing people would actually open every morning."</p>
+  </section>
 
-  <div class="cards">
-    <section class="card">
-      <span class="eyebrow">1. Our Mission</span>
-      <h2>Our Mission at Revenza</h2>
-      <p>At Revenza, we build intelligent solutions that help merchants unlock higher conversions and maximize revenue, without compromising the customer experience.</p>
-      <p>Our flagship product, Revenza Upsell Addons, enables store owners to present highly relevant add-on products at the right moment, enhancing average order value while maintaining a seamless and elegant shopping journey.</p>
-      <p>We believe that effective upselling should feel natural, not intrusive. That is why our approach focuses on precision, performance, and a refined user experience, benefiting both merchants and their customers.</p>
-      <p><strong>Revenza - designed to help you sell smarter, not harder.</strong></p>
-    </section>
+  <section class="layout">
+    <aside class="side-nav" aria-label="About sections">
+      <h2>On This Page</h2>
+      <a href="#mission">1. Our Mission</a>
+      <a href="#story">2. Revenza Story</a>
+      <a href="#values">3. Our Values</a>
+    </aside>
 
-    <section class="card">
-      <span class="eyebrow">2. Revenza Story</span>
-      <h2>How It Started</h2>
-      <div class="story-intro">
+    <div class="panels">
+      <section class="panel" id="mission">
+        <span class="tag">1. Our Mission</span>
+        <h2>Our Mission at Revenza</h2>
+        <p>At Revenza, we build intelligent solutions that help merchants increase conversions and maximize revenue while keeping the customer journey seamless and elegant.</p>
+        <p>We design tools that make upselling natural, precise, and performance-driven so merchants can sell smarter, not harder.</p>
+      </section>
+
+      <section class="panel" id="story">
+        <span class="tag">2. Revenza Story</span>
+        <h2>Every Great Product Begins with a Real Problem</h2>
         <p>Every good product has a story. Ours started with two colleagues and one brilliant idea.</p>
-      </div>
-      <p>We are <strong>Sarthak Jha (Developer)</strong> and <strong>Yatish Vijay (Support Expert)</strong>, two friends who met at work, bonded over challenges, and realized we shared the same drive: to build something meaningful for merchants.</p>
-      <p>The turning point came from a simple suggestion during a casual evening conversation: <strong>"Why don't you guys build something together?"</strong></p>
-      <p>That idea became a mission. We combined technical expertise with deep customer understanding and built products focused on helping Shopify merchants increase revenue, improve conversions, and deliver a better shopping experience.</p>
-    </section>
+        <p>We are <strong>Sarthak Jha (Developer)</strong> and <strong>Yatish Vijay (Support Expert)</strong>, two friends who met at work, bonded over shared challenges, and realized we both wanted to build something meaningful for merchants.</p>
+        <p>Like many builders, we each tried separate paths first. We faced setbacks, learned the hard way, and kept moving. The turning point, however, did not come from a strategy deck or a business meeting.</p>
+        <p>It came from a casual evening conversation with Sarthak's wife, who said: <strong>"Why don't you guys build something together?"</strong></p>
+        <p>That one sentence changed everything. No overplanning. No waiting for a perfect time. Just a decision to start that same night.</p>
+        <p>We combined technical execution and customer-first operations, then built our first product for Shopify merchants to:</p>
+        <ul class="list">
+          <li>Increase revenue with relevant add-ons</li>
+          <li>Improve conversion rates without disruption</li>
+          <li>Create better shopping experiences customers enjoy</li>
+        </ul>
+        <p>What began as an idea over a drink became a focused mission: help merchants grow with smarter systems and better product experiences.</p>
+      </section>
 
-    <section class="card">
-      <span class="eyebrow">3. Why Merchants Choose Us</span>
-      <h2>What We Stand For</h2>
-      <ul class="story-list">
-        <li><strong>Merchant-first thinking:</strong> Every feature is built to solve real ecommerce problems.</li>
-        <li><strong>Performance with precision:</strong> We focus on timing, relevance, and speed so upsells feel natural.</li>
-        <li><strong>Experience-led design:</strong> We help merchants grow revenue without hurting customer trust.</li>
-        <li><strong>Long-term partnership:</strong> We continuously improve with feedback and support merchants as they scale.</li>
-      </ul>
-      <p>Our goal is simple: help every store deliver a smarter, smoother buying journey that drives growth.</p>
-    </section>
-  </div>
-  </div>
+      <section class="panel" id="values">
+        <span class="tag">3. Our Values</span>
+        <h2>How We Build</h2>
+        <ul class="list">
+          <li><strong>Merchant-first:</strong> We solve practical problems that directly impact growth.</li>
+          <li><strong>Quality over noise:</strong> We avoid feature bloat and focus on what drives outcomes.</li>
+          <li><strong>Seamless UX:</strong> Every product decision protects customer trust and experience.</li>
+          <li><strong>Continuous improvement:</strong> We ship, learn, and refine with real merchant feedback.</li>
+        </ul>
+        <p>Revenza is just getting started, and we are committed to building tools that help businesses scale with confidence.</p>
+      </section>
+    </div>
+  </section>
 </main>
 </div>
 </body>
