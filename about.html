@@ -4,11 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Revenza - About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: Arial, sans-serif;
-  color: #222;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  color: #17314a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   background:
     radial-gradient(circle at 10% 10%, rgba(83, 74, 183, 0.12), transparent 32%),
     radial-gradient(circle at 85% 0%, rgba(14, 179, 151, 0.14), transparent 28%),
@@ -28,8 +34,15 @@ body {
 }
 .brand { font-size: 20px; }
 .nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.nav a { text-decoration: none; color: #555; padding: 8px 10px; border-radius: 6px; }
-.nav a.active { color: #534AB7; font-weight: 600; background: #f4f3ff; }
+.nav a {
+  text-decoration: none;
+  color: #4f6479;
+  padding: 8px 11px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.nav a:hover { background: #edf5ff; color: #274865; }
+.nav a.active { color: #2e4ec3; font-weight: 700; background: #eaf0ff; }
 .main {
   width: 100%;
   max-width: 980px;
@@ -70,20 +83,65 @@ body {
   background: radial-gradient(circle, rgba(14, 179, 151, 0.16) 0%, rgba(14, 179, 151, 0.03) 70%);
   border-radius: 999px;
 }
-h1 { margin-bottom: 12px; }
-h2 { margin: 24px 0 10px; color: #1f3b56; }
-p { line-height: 1.75; margin-bottom: 12px; }
-.story-intro {
-  background: #f7faff;
-  border: 1px solid #e2ecf7;
-  border-radius: 12px;
-  padding: 16px;
+h1 {
+  margin-bottom: 14px;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.4px;
+}
+h2 {
+  margin: 26px 0 10px;
+  color: #1f3b56;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.15px;
+}
+p {
+  line-height: 1.78;
   margin-bottom: 12px;
+  color: #2d4760;
+  font-size: 16px;
+}
+.story-intro {
+  background: linear-gradient(135deg, #f7faff 0%, #f2fbff 100%);
+  border: 1px solid #dce8f6;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 12px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.card {
+  background: #ffffff;
+  border: 1px solid #deebf8;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 8px 18px rgba(28, 66, 106, 0.06);
+}
+.card h2 { margin-top: 0; }
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #235483;
+  background: #eef6ff;
+  border: 1px solid #d5e8fb;
+  border-radius: 999px;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
 }
 .story-list {
   margin: 8px 0 12px 20px;
   line-height: 1.7;
+  color: #2d4760;
 }
+.story-list li { margin-bottom: 6px; }
+strong { color: #183a63; }
 .content {
   position: relative;
   z-index: 1;
@@ -112,51 +170,41 @@ p { line-height: 1.75; margin-bottom: 12px; }
 </header>
 <main class="main">
   <div class="content">
-  <h1>Our Story</h1>
+  <h1>About Revenza</h1>
 
-  <div class="story-intro">
-    <p>Every good product has a story. Ours started with two colleagues and one brilliant idea.</p>
+  <div class="cards">
+    <section class="card">
+      <span class="eyebrow">1. Our Mission</span>
+      <h2>Our Mission at Revenza</h2>
+      <p>At Revenza, we build intelligent solutions that help merchants unlock higher conversions and maximize revenue, without compromising the customer experience.</p>
+      <p>Our flagship product, Revenza Upsell Addons, enables store owners to present highly relevant add-on products at the right moment, enhancing average order value while maintaining a seamless and elegant shopping journey.</p>
+      <p>We believe that effective upselling should feel natural, not intrusive. That is why our approach focuses on precision, performance, and a refined user experience, benefiting both merchants and their customers.</p>
+      <p><strong>Revenza - designed to help you sell smarter, not harder.</strong></p>
+    </section>
+
+    <section class="card">
+      <span class="eyebrow">2. Revenza Story</span>
+      <h2>How It Started</h2>
+      <div class="story-intro">
+        <p>Every good product has a story. Ours started with two colleagues and one brilliant idea.</p>
+      </div>
+      <p>We are <strong>Sarthak Jha (Developer)</strong> and <strong>Yatish Vijay (Support Expert)</strong>, two friends who met at work, bonded over challenges, and realized we shared the same drive: to build something meaningful for merchants.</p>
+      <p>The turning point came from a simple suggestion during a casual evening conversation: <strong>"Why don't you guys build something together?"</strong></p>
+      <p>That idea became a mission. We combined technical expertise with deep customer understanding and built products focused on helping Shopify merchants increase revenue, improve conversions, and deliver a better shopping experience.</p>
+    </section>
+
+    <section class="card">
+      <span class="eyebrow">3. Why Merchants Choose Us</span>
+      <h2>What We Stand For</h2>
+      <ul class="story-list">
+        <li><strong>Merchant-first thinking:</strong> Every feature is built to solve real ecommerce problems.</li>
+        <li><strong>Performance with precision:</strong> We focus on timing, relevance, and speed so upsells feel natural.</li>
+        <li><strong>Experience-led design:</strong> We help merchants grow revenue without hurting customer trust.</li>
+        <li><strong>Long-term partnership:</strong> We continuously improve with feedback and support merchants as they scale.</li>
+      </ul>
+      <p>Our goal is simple: help every store deliver a smarter, smoother buying journey that drives growth.</p>
+    </section>
   </div>
-
-  <p>We are <strong>Sarthak Jha (Developer)</strong> and <strong>Yatish Vijay (Support Expert)</strong>, two friends who met at work, bonded over challenges, and eventually realized we shared something bigger: the drive to build something meaningful.</p>
-
-  <p>Like many builders, we both tried our own paths, faced our own struggles, and learned things the hard way. But the turning point did not come from a whiteboard session or a business meeting.</p>
-
-  <p>It came from Sarthak's wife.</p>
-
-  <p>One evening, during a casual conversation (with a few drinks involved), she dropped a simple idea:</p>
-  <p><strong>"Why don't you guys build something together?"</strong></p>
-
-  <p>That was it. No complicated planning. No overthinking.</p>
-  <p>Just two friends, one idea, and the decision to start that very night.</p>
-
-  <h2>What Happened Next</h2>
-  <p>What began as a spontaneous decision quickly turned into a mission.</p>
-  <p>We combined:</p>
-  <ul class="story-list">
-    <li>Technical expertise (Sarthak)</li>
-    <li>Customer understanding and operations (Yatish)</li>
-  </ul>
-  <p>And built our first product focused on helping Shopify merchants:</p>
-  <ul class="story-list">
-    <li>Increase revenue</li>
-    <li>Improve conversions</li>
-    <li>Deliver a better shopping experience</li>
-  </ul>
-
-  <h2>Where We're Headed</h2>
-  <p>Revenza is not just one project, it is the beginning.</p>
-  <p>We are committed to continuously building solutions that help merchants:</p>
-  <ul class="story-list">
-    <li>Sell smarter</li>
-    <li>Grow faster</li>
-    <li>Deliver a seamless, high-quality experience to their customers</li>
-  </ul>
-  <p>Because in the end, great businesses are not just about selling more, they are about creating experiences customers actually enjoy.</p>
-
-  <h2>In Simple Words</h2>
-  <p>Two friends. One unexpected idea. And a journey that started over a drink, and is now focused on helping merchants grow better every day.</p>
-  <p><strong>And we are just getting started.</strong></p>
   </div>
 </main>
 </div>
