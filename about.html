@@ -1,1 +1,54 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenza - About</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; color: #222; background: #fff; }
+.app { display: flex; flex-direction: column; min-height: 100vh; }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  min-height: 56px;
+  border-bottom: 1px solid #eee;
+  gap: 16px;
+}
+.brand { font-size: 20px; }
+.nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.nav a { text-decoration: none; color: #555; padding: 8px 10px; border-radius: 6px; }
+.nav a.active { color: #534AB7; font-weight: 600; background: #f4f3ff; }
+.main { width: 100%; padding: 28px 20px; }
+h1 { margin-bottom: 12px; }
+p { line-height: 1.6; margin-bottom: 10px; }
+@media (max-width: 768px) {
+  .header { align-items: flex-start; padding: 12px 14px; }
+  .main { padding: 20px 14px; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="header">
+  <div class="brand"><strong>Revenza</strong></div>
+  <nav class="nav" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="apps.html">Apps</a>
+    <a href="kb.html">Knowledgebase</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </nav>
+</header>
+<main class="main">
+  <h1>About</h1>
+  <p>Revenza builds practical tools to help businesses improve ecommerce performance and operations.</p>
+  <p>Share your mission, team story, and company values here.</p>
+</main>
+</div>
+</body>
+</html>
