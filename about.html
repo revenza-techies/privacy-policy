@@ -1,356 +1,603 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Revenza - About</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #f2f7ff;
-  --surface: #ffffff;
-  --surface-soft: #f7fbff;
-  --text: #10263a;
-  --muted: #4c6278;
-  --line: #d8e8f8;
-  --brand: #1f63d8;
-  --brand-2: #00a9be;
-  --brand-soft: #e9f3ff;
-  --shadow: 0 16px 36px rgba(24, 73, 130, 0.12);
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: "Manrope", "Segoe UI", sans-serif;
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  background:
-    radial-gradient(circle at 10% 0%, rgba(31, 99, 216, 0.16), transparent 35%),
-    radial-gradient(circle at 100% 14%, rgba(0, 169, 190, 0.18), transparent 30%),
-    linear-gradient(180deg, #f7fbff 0%, var(--bg) 100%);
-}
-.app { min-height: 100vh; }
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 70px;
-  padding: 10px 20px;
-  border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(7px);
-  gap: 12px;
-}
-.brand {
-  font-family: "Sora", sans-serif;
-  letter-spacing: 0.3px;
-  font-size: 22px;
-}
-.nav { display: flex; flex-wrap: wrap; gap: 8px; }
-.nav a {
-  text-decoration: none;
-  color: #435d74;
-  font-weight: 700;
-  font-size: 14px;
-  border-radius: 999px;
-  padding: 8px 12px;
-}
-.nav a:hover { background: #edf5ff; color: var(--text); }
-.nav a.active {
-  background: var(--brand-soft);
-  color: var(--brand);
-  box-shadow: inset 0 0 0 1px #d3e6ff;
-}
-.page {
-  width: 100%;
-  max-width: 1220px;
-  margin: 20px auto 32px;
-  padding: 0 18px;
-}
-.hero {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  padding: 30px;
-  box-shadow: var(--shadow);
-  background:
-    linear-gradient(135deg, rgba(31, 99, 216, 0.94) 0%, rgba(0, 169, 190, 0.9) 100%);
-  color: #ffffff;
-}
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  border-radius: 999px;
-  pointer-events: none;
-}
-.hero::before {
-  width: 260px;
-  height: 260px;
-  right: -100px;
-  top: -120px;
-  background: rgba(255, 255, 255, 0.16);
-}
-.hero::after {
-  width: 220px;
-  height: 220px;
-  left: -70px;
-  bottom: -130px;
-  background: rgba(255, 255, 255, 0.12);
-}
-.hero-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1.4fr 0.9fr;
-  gap: 22px;
-}
-.hero h1 {
-  font-family: "Sora", sans-serif;
-  font-size: clamp(34px, 5vw, 56px);
-  line-height: 1.02;
-  letter-spacing: -0.8px;
-  margin-bottom: 14px;
-}
-.hero p {
-  font-size: 17px;
-  line-height: 1.76;
-  color: rgba(255, 255, 255, 0.94);
-}
-.quote {
-  margin-top: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.12);
-  padding: 12px 14px;
-  font-weight: 700;
-}
-.metric-wrap {
-  display: grid;
-  gap: 10px;
-}
-.metric {
-  border: 1px solid rgba(255, 255, 255, 0.36);
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
-  padding: 12px;
-}
-.metric strong {
-  display: block;
-  font-family: "Sora", sans-serif;
-  font-size: 20px;
-  margin-bottom: 4px;
-}
-.metric span {
-  font-size: 13px;
-  opacity: 0.95;
-}
-.shell {
-  margin-top: 16px;
-  display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  gap: 16px;
-}
-.side {
-  position: sticky;
-  top: 84px;
-  align-self: start;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--surface);
-  padding: 16px;
-  box-shadow: 0 8px 18px rgba(24, 73, 130, 0.06);
-}
-.side h2 {
-  font-size: 12px;
-  margin-bottom: 10px;
-  color: #3b5a77;
-  text-transform: uppercase;
-  letter-spacing: 0.45px;
-}
-.side a {
-  display: block;
-  text-decoration: none;
-  color: #46607b;
-  font-weight: 700;
-  font-size: 14px;
-  padding: 9px 10px;
-  border-radius: 10px;
-  margin-bottom: 6px;
-}
-.side a:hover {
-  background: #eff7ff;
-  color: var(--brand);
-}
-.stack {
-  display: grid;
-  gap: 14px;
-}
-.card {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--surface);
-  box-shadow: 0 10px 24px rgba(18, 57, 100, 0.07);
-  padding: 22px;
-}
-.card::after {
-  content: "";
-  position: absolute;
-  width: 160px;
-  height: 160px;
-  right: -70px;
-  top: -80px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(31, 99, 216, 0.13) 0%, rgba(31, 99, 216, 0.02) 70%);
-}
-.badge {
-  display: inline-block;
-  margin-bottom: 10px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid #d6e9ff;
-  background: #eef6ff;
-  color: #285786;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.28px;
-  text-transform: uppercase;
-}
-.card h2 {
-  position: relative;
-  z-index: 1;
-  font-family: "Sora", sans-serif;
-  font-size: clamp(24px, 3vw, 33px);
-  line-height: 1.15;
-  letter-spacing: -0.4px;
-  margin-bottom: 11px;
-}
-.card p {
-  position: relative;
-  z-index: 1;
-  color: #2b445e;
-  font-size: 16px;
-  line-height: 1.8;
-  margin-bottom: 11px;
-}
-.list {
-  position: relative;
-  z-index: 1;
-  margin: 8px 0 12px 20px;
-  color: #2b445e;
-  line-height: 1.8;
-}
-.list li { margin-bottom: 6px; }
-.story-highlight {
-  position: relative;
-  z-index: 1;
-  border-left: 4px solid #8db2ef;
-  background: #f3f8ff;
-  border-radius: 10px;
-  padding: 10px 12px;
-  margin: 8px 0 10px;
-  font-weight: 700;
-  color: #2b4e73;
-}
-@media (max-width: 940px) {
-  .hero-grid,
-  .shell { grid-template-columns: 1fr; }
-  .side { position: static; }
-}
-@media (max-width: 768px) {
-  .header { align-items: flex-start; padding: 12px 14px; }
-  .page { margin: 14px auto 20px; padding: 0 10px; }
-  .hero { border-radius: 16px; padding: 20px 14px; }
-  .card { border-radius: 14px; padding: 16px 14px; }
-  .hero p, .card p { font-size: 15px; }
-}
-</style>
-</head>
-<body>
-<div class="app">
-<header class="header">
-  <div class="brand"><strong>Revenza</strong></div>
-  <nav class="nav" aria-label="Primary navigation">
-    <a href="index.html">Home</a>
-    <a href="apps.html">Apps</a>
-    <a href="kb.html">Knowledgebase</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="about.html" class="active">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy Policy</a>
-  </nav>
-</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Revenza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --surface-soft: #f8fbff;
+        --text: #0f172a;
+        --muted: #5b6b85;
+        --line: #dbe5f1;
+        --blue: #2563eb;
+        --cyan: #06b6d4;
+        --emerald: #10b981;
+        --hero-dark: #0f172a;
+        --hero-mid: #1d4ed8;
+        --hero-light: #22c7e8;
+        --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+        --radius-xl: 32px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
+        --maxw: 1200px;
+      }
 
-<main class="page">
-  <section class="hero">
-    <div class="hero-grid">
-      <div>
-        <h1>About Revenza</h1>
-        <p>It started with a frustration. Our founders spent years watching talented teams lose hours every week to clunky tools and scattered processes. So in 2026, they set out to build something different.</p>
-        <p class="quote">"We didn't want to build another feature-bloated app. We wanted to build the one thing people would actually open every morning."</p>
-      </div>
-      <div class="metric-wrap" aria-label="Highlights">
-        <div class="metric"><strong>Merchant-First</strong><span>Built for real ecommerce outcomes, not vanity features.</span></div>
-        <div class="metric"><strong>Precision Upsell</strong><span>Smart add-ons at the right time in the buyer journey.</span></div>
-        <div class="metric"><strong>Experience-Led</strong><span>Revenue growth without harming shopper trust.</span></div>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(90deg, #f2f6fb 0%, #f8fbff 50%, #eef9fb 100%);
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(var(--maxw), calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .hero-wrap {
+        padding: 28px 0 18px;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 56px;
+        border-radius: var(--radius-xl);
+        background: linear-gradient(135deg, var(--hero-dark) 0%, var(--hero-mid) 46%, var(--hero-light) 100%);
+        color: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        pointer-events: none;
+        filter: blur(10px);
+      }
+
+      .hero::before {
+        width: 260px;
+        height: 260px;
+        right: -40px;
+        top: -60px;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .hero::after {
+        width: 200px;
+        height: 200px;
+        left: 40px;
+        bottom: -100px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .hero-grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.25fr 0.9fr;
+        gap: 28px;
+        align-items: end;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+
+      h1 {
+        margin: 18px 0 0;
+        font-size: clamp(2.2rem, 4vw, 4.2rem);
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+      }
+
+      .hero p.lead {
+        max-width: 720px;
+        margin: 20px 0 0;
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.86);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 20px;
+        border-radius: 18px;
+        font-weight: 700;
+        font-size: 14px;
+        transition: transform 0.2s ease, background 0.2s ease, border 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: #fff;
+        color: var(--text);
+      }
+
+      .btn-secondary {
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 30px;
+      }
+
+      .stat-card,
+      .glass-card,
+      .quote-card {
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        border-radius: 24px;
+      }
+
+      .stat-card {
+        padding: 18px;
+      }
+
+      .stat-card small {
+        display: block;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 13px;
+        margin-bottom: 8px;
+      }
+
+      .stat-card strong {
+        font-size: 1.02rem;
+        line-height: 1.5;
+      }
+
+      .hero-side {
+        display: grid;
+        gap: 14px;
+      }
+
+      .glass-card {
+        padding: 22px;
+      }
+
+      .glass-card h3,
+      .quote-card h3 {
+        margin: 0;
+        font-size: 1.55rem;
+        line-height: 1.2;
+      }
+
+      .glass-card p {
+        margin: 10px 0 0;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.7;
+        font-size: 0.95rem;
+      }
+
+      .quote-card {
+        padding: 24px;
+        background: rgba(9, 15, 38, 0.2);
+      }
+
+      .quote-card p {
+        margin: 0;
+        font-size: 1.15rem;
+        line-height: 1.75;
+        font-weight: 700;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: 270px minmax(0, 1fr);
+        gap: 24px;
+        padding: 14px 0 64px;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 24px;
+        align-self: start;
+      }
+
+      .nav-card,
+      .section-card,
+      .value-card,
+      .builder-card {
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-card {
+        border-radius: 24px;
+        padding: 22px;
+      }
+
+      .nav-card .mini-label,
+      .section-label {
+        display: inline-flex;
+        align-items: center;
+        padding: 7px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .mini-label {
+        background: #eef4fb;
+        color: #5f6f86;
+      }
+
+      .nav-links {
+        display: grid;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .nav-links a {
+        padding: 12px 14px;
+        border-radius: 14px;
+        color: #334155;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .nav-links a:hover {
+        background: #f3f7fb;
+      }
+
+      .main-content {
+        display: grid;
+        gap: 24px;
+      }
+
+      .section-card {
+        border-radius: 30px;
+        padding: 34px;
+      }
+
+      .section-label.blue {
+        background: #ebf4ff;
+        color: #2157cf;
+      }
+
+      .section-label.cyan {
+        background: #eafcff;
+        color: #0f8da8;
+      }
+
+      .section-label.green {
+        background: #ecfdf5;
+        color: #0f8b62;
+      }
+
+      h2 {
+        margin: 16px 0 0;
+        font-size: clamp(1.9rem, 2.5vw, 3rem);
+        line-height: 1.12;
+        letter-spacing: -0.03em;
+      }
+
+      .section-card p {
+        margin: 16px 0 0;
+        color: var(--muted);
+        line-height: 1.85;
+        font-size: 1rem;
+      }
+
+      .highlight-box {
+        margin-top: 20px;
+        padding: 18px 20px;
+        border-radius: 20px;
+        background: #edf6ff;
+        border: 1px solid #d7ebff;
+        color: #35506f;
+        line-height: 1.8;
+        font-weight: 600;
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .value-card {
+        border-radius: 24px;
+        padding: 24px;
+        background: #f9fbfe;
+      }
+
+      .value-card h3 {
+        margin: 0;
+        font-size: 1.12rem;
+      }
+
+      .value-card p {
+        margin-top: 12px;
+        font-size: 0.96rem;
+      }
+
+      .builders-section {
+        overflow: hidden;
+        border-radius: 30px;
+        background: linear-gradient(180deg, #0f172a 0%, #111c33 100%);
+        color: #fff;
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        box-shadow: var(--shadow);
+      }
+
+      .builders-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 20px;
+        padding: 36px;
+      }
+
+      .builders-section p {
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .builder-stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .builder-card {
+        border-radius: 24px;
+        padding: 22px;
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+
+      .builder-role {
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 14px;
+      }
+
+      .builder-card h3 {
+        margin: 8px 0 0;
+        font-size: 1.7rem;
+      }
+
+      .builder-card p {
+        margin-top: 12px;
+        font-size: 0.96rem;
+      }
+
+      @media (max-width: 1024px) {
+        .hero {
+          padding: 36px;
+        }
+
+        .hero-grid,
+        .content-grid,
+        .builders-grid,
+        .values-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: static;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .hero-wrap {
+          padding-top: 18px;
+        }
+
+        .hero {
+          padding: 24px;
+          border-radius: 24px;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .section-card,
+        .builders-grid {
+          padding: 24px;
+        }
+
+        .quote-card p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero-wrap">
+      <div class="container">
+        <section class="hero">
+          <div class="hero-grid">
+            <div>
+              <span class="eyebrow">About Revenza</span>
+              <h1>We build upsell tools that help merchants grow without making stores feel salesy.</h1>
+              <p class="lead">
+                Revenza exists to make product recommendations feel smarter, cleaner, and more useful. We help merchants increase conversions and revenue while keeping the customer journey smooth and trustworthy.
+              </p>
+
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#story">Read our story</a>
+                <a class="btn btn-secondary" href="#values">Explore our values</a>
+              </div>
+
+              <div class="stats">
+                <div class="stat-card">
+                  <small>Built for</small>
+                  <strong>Shopify merchants</strong>
+                </div>
+                <div class="stat-card">
+                  <small>Focus</small>
+                  <strong>Revenue + customer experience</strong>
+                </div>
+                <div class="stat-card">
+                  <small>Style</small>
+                  <strong>Simple, useful, fast</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-side">
+              <div class="glass-card">
+                <h3>Merchant-First</h3>
+                <p>Everything we build starts with one question: will this genuinely help a merchant sell better without making the store feel pushy?</p>
+              </div>
+              <div class="glass-card">
+                <h3>Precision Upsell</h3>
+                <p>Relevant add-ons, smart timing, and clean presentation—because good upsells should feel helpful, not noisy.</p>
+              </div>
+              <div class="glass-card">
+                <h3>Experience-Led</h3>
+                <p>We care about conversions, but never at the cost of shopper trust, clarity, or a smooth buying journey.</p>
+              </div>
+              <div class="quote-card">
+                <p>“We didn’t want to build another bloated app. We wanted to build something merchants would actually enjoy using.”</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
-  </section>
 
-  <section class="shell">
-    <aside class="side" aria-label="About sections">
-      <h2>Navigate</h2>
-      <a href="#mission">1. Our Mission</a>
-      <a href="#story">2. Revenza Story</a>
-      <a href="#values">3. Our Values</a>
-    </aside>
+    <div class="container">
+      <div class="content-grid">
+        <aside class="sidebar">
+          <div class="nav-card">
+            <span class="mini-label">Navigate</span>
+            <nav class="nav-links">
+              <a href="#mission">1. Our Mission</a>
+              <a href="#story">2. Revenza Story</a>
+              <a href="#values">3. Our Values</a>
+              <a href="#builders">4. The People Behind It</a>
+            </nav>
+          </div>
+        </aside>
 
-    <div class="stack">
-      <section class="card" id="mission">
-        <span class="badge">1. Our Mission</span>
-        <h2>Our Mission at Revenza</h2>
-        <p>At Revenza, we build intelligent solutions that help merchants increase conversions and maximize revenue while keeping the customer journey seamless and elegant.</p>
-        <p>We design tools that make upselling natural, precise, and performance-driven so merchants can sell smarter, not harder.</p>
-      </section>
+        <main class="main-content">
+          <section id="mission" class="section-card">
+            <span class="section-label blue">Our Mission</span>
+            <h2>Helping merchants increase revenue with relevance, not randomness.</h2>
+            <p>
+              At Revenza, we design upsell experiences that feel like a natural part of shopping. The goal is simple: help store owners surface the right add-on products at the right moment.
+            </p>
+            <p>
+              We believe the best commerce tools are the ones that improve results quietly—by making decisions sharper, interfaces cleaner, and buying journeys smoother.
+            </p>
+          </section>
 
-      <section class="card" id="story">
-        <span class="badge">2. Revenza Story</span>
-        <h2>Every Great Product Begins with a Real Problem</h2>
-        <p>Every good product has a story. Ours started with two colleagues and one brilliant idea.</p>
-        <p>We are <strong>Sarthak Jha (Developer)</strong> and <strong>Yatish Vijay (Support Expert)</strong>, two friends who met at work, bonded over shared challenges, and realized we both wanted to build something meaningful for merchants.</p>
-        <p>Like many builders, we each tried separate paths first. We faced setbacks, learned the hard way, and kept moving. The turning point, however, did not come from a strategy deck or a business meeting.</p>
-        <p class="story-highlight">It came from a casual evening conversation with Sarthak's wife, who said: "Why don't you guys build something together?"</p>
-        <p>That one sentence changed everything. No overplanning. No waiting for a perfect time. Just a decision to start that same night.</p>
-        <p>We combined technical execution and customer-first operations, then built our first product for Shopify merchants to:</p>
-        <ul class="list">
-          <li>Increase revenue with relevant add-ons</li>
-          <li>Improve conversion rates without disruption</li>
-          <li>Create better shopping experiences customers enjoy</li>
-        </ul>
-        <p>What began as an idea over a drink became a focused mission: help merchants grow with smarter systems and better product experiences.</p>
-      </section>
+          <section id="story" class="section-card">
+            <span class="section-label cyan">Revenza Story</span>
+            <h2>Every good product starts with a real merchant problem.</h2>
+            <p>
+              Revenza was started by two friends, <strong>Sarthak Jha</strong> and <strong>Yatish Vijay</strong>, who met as colleagues and kept seeing the same thing: merchants often had growth opportunities, but the tools available to them were either too clunky, too generic, or too complicated.
+            </p>
+            <p>
+              Like most builders, we tried figuring things out separately first. There were experiments, setbacks, late nights, and the usual “maybe later” thinking.
+            </p>
+            <div class="highlight-box">
+              Then came the spark: a casual conversation, a simple suggestion from Sarthak’s wife, and one of those nights where an idea suddenly feels too real to ignore.
+            </div>
+            <p>
+              That idea turned into Revenza—a brand built to help Shopify merchants grow in a way that feels premium, practical, and customer-friendly.
+            </p>
+          </section>
 
-      <section class="card" id="values">
-        <span class="badge">3. Our Values</span>
-        <h2>How We Build</h2>
-        <ul class="list">
-          <li><strong>Merchant-first:</strong> We solve practical problems that directly impact growth.</li>
-          <li><strong>Quality over noise:</strong> We avoid feature bloat and focus on what drives outcomes.</li>
-          <li><strong>Seamless UX:</strong> Every product decision protects customer trust and experience.</li>
-          <li><strong>Continuous improvement:</strong> We ship, learn, and refine with real merchant feedback.</li>
-        </ul>
-        <p>Revenza is just getting started, and we are committed to building tools that help businesses scale with confidence.</p>
-      </section>
+          <section id="values" class="section-card">
+            <span class="section-label green">Our Values</span>
+            <h2>The principles that shape every feature we ship.</h2>
+            <div class="values-grid">
+              <div class="value-card">
+                <h3>Useful over flashy</h3>
+                <p>We prefer features merchants will use every day over features that only look good in demos.</p>
+              </div>
+              <div class="value-card">
+                <h3>Growth with trust</h3>
+                <p>Upsells should increase order value without making the shopper feel tricked or overwhelmed.</p>
+              </div>
+              <div class="value-card">
+                <h3>Simple wins</h3>
+                <p>Clear settings, focused workflows, and smart defaults beat unnecessary complexity every time.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="builders" class="builders-section">
+            <div class="builders-grid">
+              <div>
+                <span class="section-label" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);">The People Behind Revenza</span>
+                <h2>Built by friends, shaped by real-world experience.</h2>
+                <p>
+                  One builder focused on product and development. One focused on management and support. Together, that mix keeps Revenza practical on the inside and helpful on the outside.
+                </p>
+              </div>
+
+              <div class="builder-stack">
+                <div class="builder-card">
+                  <div class="builder-role">Developer</div>
+                  <h3>Sarthak Jha</h3>
+                  <p>Focused on building reliable product experiences and turning merchant needs into clean, usable tools.</p>
+                </div>
+                <div class="builder-card">
+                  <div class="builder-role">Management &amp; Support</div>
+                  <h3>Yatish Vijay</h3>
+                  <p>Focused on understanding merchants, solving problems fast, and making sure the experience feels human.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
-  </section>
-</main>
-</div>
-</body>
+  </body>
 </html>
