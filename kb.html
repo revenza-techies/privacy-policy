@@ -1,1 +1,84 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenza - Knowledgebase</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; color: #222; background: #fff; }
+.app { display: flex; flex-direction: column; min-height: 100vh; }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  min-height: 56px;
+  border-bottom: 1px solid #eee;
+  gap: 16px;
+}
+.brand { font-size: 20px; }
+.nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.nav a { text-decoration: none; color: #555; padding: 8px 10px; border-radius: 6px; }
+.nav a.active { color: #534AB7; font-weight: 600; background: #f4f3ff; }
+.layout { display: flex; min-height: calc(100vh - 56px); }
+.sidebar {
+  width: 220px;
+  border-right: 1px solid #eee;
+  padding: 20px;
+}
+.sidebar p { margin-bottom: 10px; }
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  color: #534AB7;
+  margin-bottom: 8px;
+}
+.main { width: 100%; padding: 28px 20px; }
+h1 { margin-bottom: 12px; }
+p { line-height: 1.6; margin-bottom: 10px; }
+section { margin-top: 24px; }
+@media (max-width: 768px) {
+  .header { align-items: flex-start; padding: 12px 14px; }
+  .layout { flex-direction: column; min-height: auto; }
+  .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #eee; }
+  .main { padding: 20px 14px; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="header">
+  <div class="brand"><strong>Revenza</strong></div>
+  <nav class="nav" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="apps.html">Apps</a>
+    <a href="kb.html" class="active">Knowledgebase</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </nav>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Knowledgebase menu">
+    <p><strong>KB Menu</strong></p>
+    <a href="#overview">Overview</a>
+    <a href="#install">Installation</a>
+  </aside>
+  <main class="main">
+    <h1>Knowledgebase</h1>
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>Find setup guides, usage details, and troubleshooting resources for Revenza products.</p>
+    </section>
+    <section id="install">
+      <h2>Installation</h2>
+      <p>Step-by-step installation content can be added here for your app and integrations.</p>
+    </section>
+  </main>
+</div>
+</div>
+</body>
+</html>
