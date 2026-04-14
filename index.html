@@ -3,157 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Revenza</title>
-
+<title>Revenza - Home</title>
 <style>
-/* (YOUR ORIGINAL CSS — unchanged) */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Arial; }
+body { font-family: Arial, sans-serif; color: #222; background: #fff; }
 .app { display: flex; flex-direction: column; min-height: 100vh; }
-
-/* Header */
 .header {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:0 20px; height:56px;
-  border-bottom:1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  min-height: 56px;
+  border-bottom: 1px solid #eee;
+  gap: 16px;
+}
+.brand { font-size: 20px; }
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
 }
 .nav a {
-  margin:0 10px;
-  text-decoration:none;
-  color:#555;
+  text-decoration: none;
+  color: #555;
+  padding: 8px 10px;
+  border-radius: 6px;
 }
-.nav a.active { color:#534AB7; font-weight:600; }
-
-/* Layout */
-.body { display:flex; }
-
-/* Sidebar */
-.sidebar {
-  width:220px;
-  border-right:1px solid #eee;
-  padding:20px;
-  display:none;
+.nav a.active { color: #534AB7; font-weight: 600; background: #f4f3ff; }
+.main { width: 100%; padding: 28px 20px; }
+h1 { margin-bottom: 12px; }
+p { line-height: 1.6; margin-bottom: 10px; }
+@media (max-width: 768px) {
+  .header { align-items: flex-start; padding: 12px 14px; }
+  .main { padding: 20px 14px; }
 }
-
-/* Pages */
-.page { display:none; padding:20px; width:100%; }
-.page.active { display:block; }
-
 </style>
 </head>
-
 <body>
-
 <div class="app">
-
-<!-- HEADER -->
 <header class="header">
-  <div><strong>Revenza</strong></div>
-
-  <nav class="nav">
-    <a href="#home" id="nav-home">Home</a>
-    <a href="#apps" id="nav-apps">Apps</a>
-    <a href="#kb" id="nav-kb">Knowledgebase</a>
-    <a href="#pricing" id="nav-pricing">Pricing</a>
-    <a href="#about" id="nav-about">About</a>
-    <a href="#contact" id="nav-contact">Contact</a>
-    <a href="#privacy" id="nav-privacy">Privacy Policy</a>
+  <div class="brand"><strong>Revenza</strong></div>
+  <nav class="nav" aria-label="Primary navigation">
+    <a href="index.html" class="active">Home</a>
+    <a href="apps.html">Apps</a>
+    <a href="kb.html">Knowledgebase</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
   </nav>
 </header>
-
-<div class="body">
-
-<!-- SIDEBAR -->
-<aside class="sidebar" id="sidebar">
-  <p><strong>KB Menu</strong></p>
-  <a onclick="showSection('overview')">Overview</a>
-  <a onclick="showSection('install')">Installation</a>
-</aside>
-
-<!-- HOME -->
-<div id="page-home" class="page active">
+<main class="main">
   <h1>Homepage</h1>
-  <p>This is your original homepage (unchanged).</p>
+  <p>Welcome to Revenza. This is your main landing page.</p>
+  <p>Use the navigation links above to open each page directly.</p>
+</main>
 </div>
-
-<!-- APPS -->
-<div id="page-apps" class="page">
-  <h1>Apps</h1>
-</div>
-
-<!-- KB -->
-<div id="page-kb" class="page">
-  <h1>Knowledgebase</h1>
-
-  <div id="section-overview">Overview content</div>
-  <div id="section-install" style="display:none;">Installation content</div>
-</div>
-
-<!-- PRICING -->
-<div id="page-pricing" class="page">
-  <h1>Pricing</h1>
-</div>
-
-<!-- ABOUT -->
-<div id="page-about" class="page">
-  <h1>About</h1>
-</div>
-
-<!-- CONTACT -->
-<div id="page-contact" class="page">
-  <h1>Contact</h1>
-</div>
-
-<!-- ✅ PRIVACY PAGE -->
-<div id="page-privacy" class="page">
-  <h1>Privacy Policy</h1>
-
-  <p>This Privacy Policy explains how Revenza collects, uses, and protects your information.</p>
-
-  <h3>Information We Collect</h3>
-  <p>We may collect personal data such as name, email, and usage data.</p>
-
-  <h3>How We Use Information</h3>
-  <p>We use your data to improve services and support users.</p>
-
-  <h3>Data Protection</h3>
-  <p>Your data is securely stored.</p>
-</div>
-
-</div>
-</div>
-
-<!-- ROUTING SCRIPT -->
-<script>
-const pages = ['home','apps','kb','pricing','about','contact','privacy'];
-
-function showPage(page) {
-  pages.forEach(p => {
-    document.getElementById('page-' + p)?.classList.remove('active');
-    document.getElementById('nav-' + p)?.classList.remove('active');
-  });
-
-  document.getElementById('page-' + page)?.classList.add('active');
-  document.getElementById('nav-' + page)?.classList.add('active');
-
-  document.getElementById('sidebar').style.display = page === 'kb' ? 'block' : 'none';
-}
-
-function showSection(section) {
-  document.querySelectorAll('[id^="section-"]').forEach(s => s.style.display = 'none');
-  document.getElementById('section-' + section).style.display = 'block';
-}
-
-function handleRouting() {
-  let page = window.location.hash.replace('#','') || 'home';
-  if (!pages.includes(page)) page = 'home';
-  showPage(page);
-}
-
-window.addEventListener('load', handleRouting);
-window.addEventListener('hashchange', handleRouting);
-</script>
-
 </body>
 </html>
