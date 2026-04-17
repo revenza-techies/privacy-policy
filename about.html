@@ -502,7 +502,87 @@
         }
       }
     </style>
-  </head>
+  <style id="theme-toggle-styles">
+.mode-toggle {
+  border: 1px solid #c9d9ea;
+  background: #ffffff;
+  color: #2a4a67;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.mode-toggle:hover { background: #eef5fc; }
+
+body.dark {
+  background: #0f1724 !important;
+  color: #e6edf7 !important;
+}
+body.dark .header,
+body.dark .hero,
+body.dark .card,
+body.dark .panel,
+body.dark .section-card,
+body.dark .value-card,
+body.dark .nav-card,
+body.dark .builder-card,
+body.dark .quote-card,
+body.dark .glass-card,
+body.dark .stat-card,
+body.dark .side,
+body.dark .side-nav,
+body.dark .policy,
+body.dark .toc,
+body.dark .main,
+body.dark .chip,
+body.dark .story-intro,
+body.dark .highlight-box,
+body.dark .builders-section {
+  background: #111b2a !important;
+  border-color: #2a3a52 !important;
+  color: #dbe8f6 !important;
+  box-shadow: none !important;
+}
+body.dark .builders-section { background: #0b1320 !important; }
+body.dark .nav a,
+body.dark .nav-links a,
+body.dark .sidebar a,
+body.dark .toc a,
+body.dark .side a { color: #b8c9dd !important; }
+body.dark .nav a.active { background: #23344a !important; color: #8bc0ff !important; }
+body.dark p,
+body.dark li,
+body.dark small,
+body.dark label,
+body.dark .hero p,
+body.dark .section-card p,
+body.dark .brand-copy p,
+body.dark .info p,
+body.dark .quote,
+body.dark .metric span,
+body.dark .builder-role { color: #b7c9dd !important; }
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark strong,
+body.dark .brand,
+body.dark .company-name { color: #e6f1ff !important; }
+body.dark input,
+body.dark textarea {
+  background: #0c1420 !important;
+  border-color: #2b3d56 !important;
+  color: #e8f1fb !important;
+}
+body.dark .mode-toggle {
+  background: #162234;
+  border-color: #2f4159;
+  color: #c8daf0;
+}
+body.dark .mode-toggle:hover { background: #1d2d44; }
+</style>
+</head>
   <body>
     <header class="header">
       <div class="brand"><strong>Revenza</strong></div>
@@ -514,7 +594,9 @@
         <a href="about.html" class="active">About</a>
         <a href="contact.html">Contact</a>
         <a href="privacy.html">Privacy Policy</a>
-      </nav>
+      
+    <button id="mode-toggle" class="mode-toggle" type="button" aria-label="Toggle dark mode">Dark</button>
+  </nav>
     </header>
     <div class="hero-wrap">
       <div class="container">
@@ -659,6 +741,33 @@
         </main>
       </div>
     </div>
-  </body>
+  <script id="theme-toggle-script">
+(function () {
+  var key = 'revenza-theme';
+  var body = document.body;
+  var button = document.getElementById('mode-toggle');
+
+  function apply(theme) {
+    body.classList.toggle('dark', theme === 'dark');
+    if (button) {
+      button.textContent = theme === 'dark' ? 'Light' : 'Dark';
+      button.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+    try { localStorage.setItem(key, theme); } catch (e) {}
+  }
+
+  var saved = 'light';
+  try { saved = localStorage.getItem(key) || 'light'; } catch (e) {}
+  apply(saved);
+
+  if (button) {
+    button.addEventListener('click', function () {
+      apply(body.classList.contains('dark') ? 'light' : 'dark');
+    });
+  }
+})();
+</script>
+</body>
 </html>
+
 
