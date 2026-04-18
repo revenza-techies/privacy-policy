@@ -65,6 +65,69 @@ p { line-height: 1.6; margin-bottom: 10px; }
   border-radius: 999px;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
 }
+
+body {
+  transition: background-color 0.35s ease, color 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+}
+body.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+body.page-ready {
+  opacity: 1;
+  transform: translateY(0);
+}
+body.page-switching {
+  opacity: 0.92;
+  transform: translateY(-4px);
+}
+
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.page-transition-overlay .inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #d5e3f1;
+  border-radius: 14px;
+  padding: 10px 14px;
+  color: #2b4b69;
+  font-weight: 700;
+}
+.page-transition-overlay img {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+body.page-switching .page-transition-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.dark {
+  background: #101010 !important;
+  color: #e6edf7 !important;
+}
+body.dark .page-transition-overlay {
+  background: rgba(16, 16, 16, 0.72);
+}
+body.dark .page-transition-overlay .inner {
+  background: rgba(24, 24, 24, 0.94);
+  border-color: #2f2f2f;
+  color: #d4e0ef;
+}
 body.dark .mode-toggle {
   background: #2a3f58;
   border-color: #3a516c;
@@ -74,10 +137,6 @@ body.dark .mode-toggle::before {
   background: #dbe8f5;
 }
 
-body.dark {
-  background: #0f1724 !important;
-  color: #e6edf7 !important;
-}
 body.dark .header,
 body.dark .hero,
 body.dark .card,
@@ -101,18 +160,18 @@ body.dark .highlight-box,
 body.dark .builders-section,
 body.dark .last-updated,
 body.dark .contact-chip {
-  background: #111b2a !important;
-  border-color: #2a3a52 !important;
+  background: #1a1a1a !important;
+  border-color: #2f2f2f !important;
   color: #dbe8f6 !important;
   box-shadow: none !important;
 }
-body.dark .builders-section { background: #0b1320 !important; }
+body.dark .builders-section { background: #141414 !important; }
 body.dark .nav a,
 body.dark .nav-links a,
 body.dark .sidebar a,
 body.dark .toc a,
-body.dark .side a { color: #b8c9dd !important; }
-body.dark .nav a.active { background: #23344a !important; color: #8bc0ff !important; }
+body.dark .side a { color: #c8d6e7 !important; }
+body.dark .nav a.active { background: #2b2b2b !important; color: #8bc0ff !important; }
 body.dark p,
 body.dark li,
 body.dark small,
@@ -128,18 +187,18 @@ body.dark .policy p,
 body.dark .policy li,
 body.dark .policy h2,
 body.dark .last-updated,
-body.dark .last-updated strong { color: #b7c9dd !important; }
+body.dark .last-updated strong { color: #c9d8e8 !important; }
 body.dark h1,
 body.dark h2,
 body.dark h3,
 body.dark strong,
 body.dark .brand,
 body.dark .company-name,
-body.dark .policy h1 { color: #e6f1ff !important; }
+body.dark .policy h1 { color: #f2f7ff !important; }
 body.dark input,
 body.dark textarea {
-  background: #0c1420 !important;
-  border-color: #2b3d56 !important;
+  background: #121212 !important;
+  border-color: #303030 !important;
   color: #e8f1fb !important;
 }
 </style>
@@ -172,13 +231,24 @@ body.dark textarea {
   var body = document.body;
   var button = document.getElementById('mode-toggle');
 
+  function ensureOverlay() {
+    var overlay = document.getElementById('page-transition-overlay');
+    if (overlay) return overlay;
+    overlay = document.createElement('div');
+    overlay.id = 'page-transition-overlay';
+    overlay.className = 'page-transition-overlay';
+    overlay.innerHTML = '<div class="inner"><img src="assets/upsell-logo.png" alt="Revenza logo"><span>Switching page ✨</span></div>';
+    body.appendChild(overlay);
+    return overlay;
+  }
+
   function apply(theme) {
     var isDark = theme === 'dark';
     body.classList.toggle('dark', isDark);
     if (button) {
       button.setAttribute('aria-pressed', isDark ? 'true' : 'false');
       button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-      button.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+      button.title = isDark ? 'Switch to light mode ☀️' : 'Switch to dark mode 🌙';
     }
     try { localStorage.setItem(key, theme); } catch (e) {}
   }
@@ -187,15 +257,44 @@ body.dark textarea {
   try { saved = localStorage.getItem(key) || 'light'; } catch (e) {}
   apply(saved);
 
+  body.classList.add('page-enter');
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      body.classList.add('page-ready');
+      body.classList.remove('page-enter');
+    });
+  });
+
   if (button) {
     button.addEventListener('click', function () {
       apply(body.classList.contains('dark') ? 'light' : 'dark');
     });
   }
+
+  ensureOverlay();
+  var links = document.querySelectorAll('header .nav a[href$=".html"]');
+  links.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (e.defaultPrevented) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (link.target && link.target !== '_self') return;
+
+      var target = link.getAttribute('href');
+      if (!target) return;
+      if (target === window.location.pathname.split('/').pop()) return;
+
+      e.preventDefault();
+      body.classList.add('page-switching');
+      setTimeout(function () {
+        window.location.href = target;
+      }, 220);
+    });
+  });
 })();
 </script>
 </body>
 </html>
+
 
 
 
